@@ -24,36 +24,24 @@ dependencies:
       url: https://github.com/quochoang228/logs.git
       ref: main
   ag:
-    git:
-      url: https://github.com/quochoang228/ag.git
-      ref: main
+    path: ../ag
   di:
-    git:
-      url: https://github.com/quochoang228/di.git
-      ref: main
+    path: ../di
 
   router:
-    git:
-      url: https://github.com/quochoang228/router.git
-      ref: main
+    path: ../router
+
   ds:
-    git:
-      url: https://github.com/quochoang228/ds.git
-      ref: main
+    path: ../ds
     # git:
     #   url: https://github.com/quochoang228/ds.git
     #   ref: main
+    
   utils:
-    git:
-      url: https://github.com/quochoang228/utils.git
-      ref: main
+    path: ../utils
 
-#  storage:
-#    git:
-#      url: https://github.com/quochoang228/storage.git
-#      ref: main
-#  persistent_storage:
-#    path: ../storage/persistent_storage
+  persistent_storage:
+    path: ../storage/persistent_storage
 
 dev_dependencies:
   flutter_test:
