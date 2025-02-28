@@ -1,0 +1,63 @@
+name: auth
+description: "A new Flutter package project."
+version: 0.0.1
+homepage:
+publish_to: none
+
+environment:
+  sdk: ^3.6.0
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  hooks_riverpod: ^2.6.1
+  riverpod_annotation: ^2.3.5
+  flutter_hooks: ^0.20.5
+  # get_it: ^8.0.3
+  gap: ^3.0.1
+  go_router: ^14.8.0
+
+  logs:
+    git:
+      url: https://github.com/quochoang228/logs.git
+      ref: main
+  ag:
+    git:
+      url: https://github.com/quochoang228/ag.git
+      ref: main
+  di:
+    git:
+      url: https://github.com/quochoang228/di.git
+      ref: main
+
+  router:
+    git:
+      url: https://github.com/quochoang228/router.git
+      ref: main
+  ds:
+    git:
+      url: https://github.com/quochoang228/ds.git
+      ref: main
+    # git:
+    #   url: https://github.com/quochoang228/ds.git
+    #   ref: main
+  utils:
+    git:
+      url: https://github.com/quochoang228/utils.git
+      ref: main
+
+#  storage:
+#    git:
+#      url: https://github.com/quochoang228/storage.git
+#      ref: main
+#  persistent_storage:
+#    path: ../storage/persistent_storage
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner:
+flutter:
