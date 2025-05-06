@@ -35,11 +35,25 @@ class AuthDependency implements BaseDependencies {
       () => AuthService(Dependencies().getIt()),
     );
 
-    Dependencies().getIt<RouterService>().registerRoute(
-          RouteEntry(
-            path: AuthService.loginRouter,
-            builder: (context, state) => const LoginPage(),
-          ),
-        );
+    Dependencies().registerLazySingleton<AuthRouter>(
+      () => AuthRouter(),
+    );
+
+    Dependencies().getIt<RouterService>().registerRoutes([
+      RouteEntry(
+        path: AuthRouter.loginPage,
+        builder: (context, state) => LoginPage(
+          argument: state.extra as LoginPageArgument,
+        ),
+      ),
+      RouteEntry(
+        path: AuthRouter.forgotPasswordPage,
+        builder: (context, state) => ForgotPasswordPage(),
+      ),
+      RouteEntry(
+        path: AuthRouter.registerPage,
+        builder: (context, state) => RegisterPage(),
+      ),
+    ]);
   }
 }

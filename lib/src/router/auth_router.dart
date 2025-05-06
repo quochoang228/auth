@@ -1,8 +1,7 @@
-// part of '../../auth.dart';
+part of '../../auth.dart';
 
-// class AuthRouter {
-//   static final GoRoute route = GoRoute(
-//     path: '/login',
-//     builder: (context, state) => LoginPage(),
-//   );
-// }
+class AuthRouter {
+  static String loginPage = '/login-page';
+  static String forgotPasswordPage = '/forgot-password-page';
+  static String registerPage = '/register-page';
+}
