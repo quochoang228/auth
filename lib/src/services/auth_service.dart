@@ -70,4 +70,6 @@ class AuthService {
   User? get user => getUser() as User;
 
   Future<void> setToken(String token) => _authRepository.setToken(token);
+
+  Future<void> setUrl(Map<String, dynamic> urls) => _authRepository.setUrls(urls);
 }

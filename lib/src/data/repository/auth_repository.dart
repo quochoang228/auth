@@ -13,6 +13,8 @@ abstract class AuthRepository {
   Future<String?> fetchToken();
 
   Future<bool> isLoggedIn();
+
+  Future<void> setUrls(Map<String, dynamic> urls);
 }
 
 class AuthRepositoryImpl extends BaseRepository implements AuthRepository {
@@ -76,5 +78,12 @@ class AuthRepositoryImpl extends BaseRepository implements AuthRepository {
   @override
   Future<bool> isLoggedIn() async {
     return await _profileStorage.fetchToken() != null;
+  }
+
+  @override
+  Future<void> setUrls(Map<String, dynamic> urls) async {
+    URL_LOGIN = urls["URL_LOGIN"];
+    URL_FORGET_PASSWORD = urls["URL_FORGET_PASSWORD"];
+    URL_REGISTER = urls["URL_REGISTER"];
   }
 }

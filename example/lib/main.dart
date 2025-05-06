@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:auth/auth.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:persistent_storage/persistent_storage.dart';
 import 'package:router/router.dart';
@@ -14,10 +15,17 @@ void main() async {
     RouterService(),
   );
 
+  Dependencies().getIt<RouterService>().registerRoutes([
+    RouteEntry(
+      path: '/',
+      builder: (context, state) => const HomeScreen(),
+    ),
+  ]);
+
   await PersistentDependencies.dependeincies();
 
   Dependencies().registerFactory(
-    () => Dio(BaseOptions(baseUrl: 'http://10.248.242.247:8720/ioc-service')),
+    () => Dio(BaseOptions(baseUrl: 'http://10.207.112.100:8720/ioc-service')),
   );
 
   Dependencies().registerLazySingleton<ApiGateway>(
@@ -47,6 +55,15 @@ void main() async {
       child: MainApp(),
     ),
   );
+
+  // runApp(
+  //   ListenableBuilder(
+  //     listenable: Dependencies().getIt<RouterService>(),
+  //     builder: (context, child) => ProviderScope(
+  //       child: MainApp(),
+  //     ),
+  //   ),
+  // );
 }
 
 class MainApp extends StatelessWidget {
@@ -54,8 +71,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const HomeScreen(),
+    return MaterialApp.router(
+      routerConfig: Dependencies().getIt<RouterService>().router,
+      builder: (_, child) => child!,
     );
   }
 }
@@ -79,9 +97,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     var user = useState<User?>(User());
 
     goLogin() async {
-      await Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginPage()),
+      Dependencies().getIt<AuthService>().setUrl({
+        "URL_LOGIN": "/login/token",
+        "URL_FORGET_PASSWORD": "/login/forgot-password",
+        "URL_REGISTER": "/register",
+      });
+      await context.push(
+        AuthRouter.loginPage,
+        extra: LoginPageArgument(
+          endPoint: "/login/token",
+          title: "Super app",
+          logo: "assets/images/logo.png",
+        ),
       );
       user.value = await getUser();
     }
