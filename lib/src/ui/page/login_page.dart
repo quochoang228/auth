@@ -3,9 +3,7 @@ part of '../../../auth.dart';
 typedef OnLoginSuccess = Function(User user);
 
 class LoginPage extends StatefulHookConsumerWidget {
-  const LoginPage({required this.argument, super.key});
-
-  final LoginPageArgument argument;
+  const LoginPage({super.key});
 
   @override
   ConsumerState<LoginPage> createState() => _LoginPageState();
@@ -92,7 +90,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     // ),
                     const Gap(DSSpacing.spacing4),
                     Text(
-                      widget.argument.title ?? '',
+                      "Super App Nội Bộ",
                       style: DSTextStyle.titleMedium,
                       textAlign: TextAlign.center,
                     ),

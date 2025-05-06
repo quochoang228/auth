@@ -42,9 +42,7 @@ class AuthDependency implements BaseDependencies {
     Dependencies().getIt<RouterService>().registerRoutes([
       RouteEntry(
         path: AuthRouter.loginPage,
-        builder: (context, state) => LoginPage(
-          argument: state.extra as LoginPageArgument,
-        ),
+        builder: (context, state) => LoginPage(),
       ),
       RouteEntry(
         path: AuthRouter.forgotPasswordPage,
